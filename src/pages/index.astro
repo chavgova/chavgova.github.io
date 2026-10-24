@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectTimeline from '../components/ProjectTimeline.astro';
+import ExperiencePreview from '../components/ExperiencePreview.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Contact from '../components/Contact.astro';
+import Icon from '../components/Icon.astro';
+import { getProjects } from '../lib/projects';
+import { awards } from '../data/awards';
+import { withBase } from '../data/site';
+const projects = await getProjects();
+const recognition = awards[0];
+---
+<BaseLayout>
+  <Hero />
+  <ProjectTimeline projects={projects} />
+  <ExperiencePreview />
+  <section class="section container recognition-section" aria-labelledby="recognition-heading">
+    <SectionHeading number="03" title="A foundation in research" id="recognition-heading" />
+    <div class="recognition-grid"><div><span class="eyebrow">ISEF · {recognition.year}</span><h3>{recognition.title}</h3><p>{recognition.organization}</p></div><div><span class="eyebrow">Academic enrichment</span><h3>TU/e Honors Academy</h3><p>High-Tech Systems track · neural activity research</p></div></div>
+    <a class="text-link section-link" href={withBase('about/#awards')}>Education & awards<Icon name="arrow" size={18} /></a>
+  </section>
+  <Contact />
+</BaseLayout>

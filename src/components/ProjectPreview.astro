@@ -1,0 +1,14 @@
+---
+import type { Project } from '../lib/projects';
+import { projectUrl } from '../lib/projects';
+import { withBase } from '../data/site';
+import Icon from './Icon.astro';
+interface Props { project: Project; id: string }
+const { project, id } = Astro.props;
+const { data } = project;
+---
+<div class="project-preview" id={id}>
+  <div class="preview-context"><span class="eyebrow">{data.categories[0]}</span><span class="mono muted">{data.dateLabel || data.year}</span></div>
+  <div class="preview-body"><div><p class="preview-title">{data.title}</p><p class="preview-summary">{data.summary}</p></div><a class="text-link preview-link" href={withBase(projectUrl(project))}>See more <span class="sr-only">about {data.title}</span><Icon name="arrow" size={18} /></a></div>
+  <ul class="tags" aria-label="Skills">{data.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}</ul>
+</div>

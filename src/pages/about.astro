@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { education } from '../data/experience';
+import { awards, earlierAwards } from '../data/awards';
+import { publications } from '../data/publications';
+import Contact from '../components/Contact.astro';
+import { withBase } from '../data/site';
+import Icon from '../components/Icon.astro';
+const skills = [
+  { title: 'Language & extraction', items: 'BIO sequence labeling, BERTje, BiLSTMs, LLaMA, LoRA / QLoRA', project: 'merchant-extraction' },
+  { title: 'ML systems & software', items: 'PyTorch, PySpark, Databricks, Azure, MLflow, Docker, FastAPI, llama.cpp, MLOps', project: 'structured-extraction' },
+  { title: 'Experimental research', items: 'Mechanistic interpretability, categorical diffusion, U-Net / ResNet, model evaluation', project: 'mechanistic-interpretability' },
+  { title: 'Computer vision & imaging', items: 'RTMDet, SEM imagery, SegTHOR, 2.5D CT segmentation, Dice / HD95 / ASD', project: 'thoracic-segmentation' },
+  { title: 'Physical prototyping', items: 'Arduino, Bluetooth, Fusion 360, 3D modeling & printing', project: 'robobuba' },
+];
+---
+<BaseLayout title="About" description="About Gabriela Chavgova: AI and computer science education, research interests, technical practice, and selected research awards including ISEF 2021.">
+  <div class="container page-content">
+    <header class="page-heading"><p class="eyebrow">A little more context</p><h1>Curiosity, with a method<span class="accent">.</span></h1><p>I work across machine learning research and software engineering, based in Amsterdam.</p></header>
+    <div class="about-intro"><h2>From understanding a model<br />to making it useful.</h2><div><p>My work connects experimental questions with the engineering needed to investigate them. That has taken me from neural activity prediction and robot prototypes to merchant extraction, generative models, and scientific software.</p><p>I’m particularly interested in reliable language systems, how neural networks represent and compute, and how a promising model becomes part of a well-designed application.</p></div></div>
+    <section id="education" class="about-section"><p class="eyebrow">01 / Academic foundation</p><h2>Education & enrichment</h2><div class="education-list">{education.map((item) => <article><h3>{item.qualification}</h3><p>{item.institution}</p><span class="mono muted">{item.date}</span><span class="muted">{item.detail}</span></article>)}</div></section>
+    <section class="about-section"><p class="eyebrow">02 / Technical practice</p><h2>Skills grounded in work</h2><div class="skills-grid">{skills.map((skill) => <a href={withBase(`projects/#${skill.project}`)}><h3>{skill.title}<Icon name="diagonal" size={17} /></h3><p>{skill.items}</p></a>)}</div></section>
+    <section class="about-section"><p class="eyebrow">03 / Research interests</p><h2>Questions I keep coming back to</h2><div class="research-interests"><p>How can extraction systems stay grounded in their inputs? What makes a circuit explanation useful? How should modeling choices be compared through controlled experiments?</p><p>These questions connect my work in <a href={withBase('projects/#merchant-extraction')}>applied NLP</a>, <a href={withBase('projects/#mechanistic-interpretability')}>mechanistic interpretability</a>, and <a href={withBase('projects/#discrete-diffusion')}>discrete generative models</a>.</p><p class="muted">The archive also records collaborative research titled <em>Mixed Realities Future Security Outlook</em>, recognized by ADIS in 2021. A verified publication link is not currently available.</p></div></section>
+    <section class="about-section" id="publications"><p class="eyebrow">Selected publication</p><h2>Research in print</h2><div class="publication-list">{publications.map((publication) => <article><h3>{publication.title}</h3><p>{publication.venue}</p><p class="muted">{publication.detail}</p><p>{publication.summary}</p><div class="publication-links"><a class="text-link" href={publication.url}>Read publication<Icon name="diagonal" size={17} /></a><a class="text-link" href={publication.catalogueUrl}>National Library record<Icon name="diagonal" size={17} /></a></div></article>)}</div></section>
+    <section id="awards" class="about-section"><p class="eyebrow">04 / Selected recognition</p><h2>Awards & distinctions</h2><div class="awards-list">{awards.map((award) => <article><span class="mono muted">{award.year}</span><div><h3>{award.title}</h3><p>{award.organization}</p><span class="muted">{award.note}</span></div></article>)}</div><details class="more-awards"><summary>More awards<Icon name="chevron" size={17} /></summary><ul>{earlierAwards.map((award) => <li><span class="mono muted">{award.year}</span><span>{award.title} · {award.organization}</span></li>)}</ul></details></section>
+    <section class="personal-note"><p class="eyebrow">Beyond the screen</p><h2>Making things, sharing what I learn.</h2><p>Alongside teaching children about electronics and programming through robotics, I mentored students at the Bulgarian Academy of Sciences’ Summer Research School in 2022 and 2023. Outside technology, I enjoy tennis and Teqball.</p></section>
+  </div>
+  <Contact />
+</BaseLayout>

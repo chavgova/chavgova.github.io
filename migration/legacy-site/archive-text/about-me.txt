@@ -1,0 +1,100 @@
+Source: About Me – Gabriela Chavgova.html
+Historical reference; not final portfolio copy.
+
+Extracurricular Activities & Skills
+Machine Learning & AI
+Conducted
+Machine Learning
+research
+on recognizing human emotions through voice
+Developed an AI assistant and integrated the emotion recognition algorithm into it
+Robotics
+Created a wirelessly controlled Arduino
+robot
+with an accelerometer glove (
+RoboBuba
+)
+Designed and produced a robot head (hardware for my
+AI assistant
+) that recognizes and shows emotions
+Worked with both Arduino and Raspberry pi
+Programming
+Since 10th grade, I take a 3-year “
+IT Career
+” course from the Bulgarian Ministry of Education and Sciences with modules including:
+OOP
+Data Structures and Algorithms
+SQL Data Bases
+Software Development
+Internship
+“Python Fundamentals” – Software University 2019, certificate
+“C# Basics” – Software University 2019, certificate
+Experience
+Internship
+at “Prime Holding” – completed a project as part of a team of interns (summer 2021)
+Lecturer
+at
+“Digital Competence 2018”
+– my friend and I presented a NAO robot –its mechanics and how to program i
+3D
+Won a
+3D printer
+as a prize from a hardware competition and 3D printing became an interesting quarantine hobby for me
+Personally designed and printed both of my hardware projects –
+RoboBuba
+and
+QUINN
+Blender & Fusion 360
+Video & Image Editing
+Earned experience in producing and editing
+audio
+,
+video
+, and
+image
+materials
+Made my own logos for the projects & the website
+Adobe Photoshop, Camtasia, Audacity
+Community service/engagement
+People to People International
+– volunteering in the PTPI community since 8
+th
+grade; participated in & organized workshops and events; hosted two girls from Kosovo during the PTPI European Conference 2019 in Bulgaria and helped with the organization of the international event
+Prepared and organized
+“AI and Robotics” club in school
+during the 2021 summer
+Engaged kids
+and taught robotics to them with my RoboBuba robot
+Taught Lego robotics
+to kids in a childcare center
+Sport
+Teqball
+– became
+the first woman on
+the national Bulgarian Teqball team & participated in the
+Teqball World Cup
+2019 in Hungary
+Tennis –
+playing every week
+Other sports that I enjoy: volleyball, basketball, soccer
+< Volunteering >
+World Cup 2019 Hungary - became the first woman in the national teqball team of Bulgaria
+< Teqball >
+Teqball competition in Bulgaria 2021
+Serving
+Introduction to 3D modeling and Electronics
+< Organized "Robotics & AI" Summer Club at School >
+Practice
+3D modeling QUINN in Blender
+< 3D Modeling & Printing >
+3D printing at home during the pandemic
+Training
+< Tennis >
+Playing tennis with friends
+Hong Kong (during HKIMO - olympiad)
+< Traveling >
+Monaco
+Singapore (during SIMOC - olympiad)
+For short references and comments about me click
+here
+.

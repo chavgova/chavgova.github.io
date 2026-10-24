@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../data/site';
+---
+<BaseLayout title="Page not found" description="This page could not be found. Explore Gabriela Chavgova’s projects or return home." noindex>
+  <div class="container not-found"><p class="eyebrow">404 / A missing connection</p><h1>This page isn’t here.</h1><p>The address may have changed. There’s still plenty of work to explore.</p><div class="hero-actions"><a href={withBase()} class="button button-primary">Return home</a><a href={withBase('projects/')} class="button button-outline">Explore projects</a></div></div>
+</BaseLayout>

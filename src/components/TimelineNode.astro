@@ -1,0 +1,19 @@
+---
+import type { Project } from '../lib/projects';
+import ProjectPreview from './ProjectPreview.astro';
+import Icon from './Icon.astro';
+interface Props { project: Project; selected: boolean }
+const { project, selected } = Astro.props;
+const id = `preview-${project.id}`;
+---
+<li class="timeline-item">
+  <details class="timeline-node" name="selected-work" open={selected}>
+    <summary aria-controls={id}>
+      <span class="timeline-year mono">{project.data.year}</span>
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <span class="timeline-label">{project.data.shortTitle || project.data.title}</span>
+      <Icon name="chevron" size={16} />
+    </summary>
+    <ProjectPreview project={project} id={id} />
+  </details>
+</li>

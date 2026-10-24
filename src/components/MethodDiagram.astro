@@ -1,0 +1,9 @@
+---
+interface Props { steps?: string[]; compact?: boolean }
+const { steps = ['Research question', 'Model & evaluate', 'Engineer the system'], compact = false } = Astro.props;
+---
+<div class:list={['method-diagram', { compact }]} role="img" aria-label={`Conceptual method: ${steps.join(' → ')}. Illustrative, not experimental results.`}>
+  <div class="diagram-label mono" aria-hidden="true">METHOD / OVERVIEW</div>
+  <div class="diagram-flow" aria-hidden="true">{steps.map((step, index) => <><div class="diagram-step"><span class="mono">0{index + 1}</span><span>{step}</span></div>{index < steps.length - 1 && <span class="diagram-arrow">→</span>}</>)}</div>
+  {!compact && <p class="diagram-caption">Conceptual overview · public methods only</p>}
+</div>

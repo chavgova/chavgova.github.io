@@ -1,0 +1,12 @@
+---
+import { site, contacts, withBase } from '../data/site';
+import Icon from './Icon.astro';
+---
+<footer class="site-footer container">
+  <div><a href={withBase()} class="footer-name">{site.name}</a><p>{site.title}</p></div>
+  <nav aria-label="Footer navigation">
+    <a href={withBase('projects/')}>Projects</a><a href={withBase('about/')}>About</a>
+    {contacts.map(({ href, label, icon }) => <a href={href}><Icon name={icon} size={17} />{label}</a>)}
+  </nav>
+  <span class="footer-location">Amsterdam, NL</span>
+</footer>

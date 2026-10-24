@@ -1,0 +1,11 @@
+---
+import { experience } from '../data/experience';
+import { withBase } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+---
+<section class="section container" aria-labelledby="experience-heading">
+  <SectionHeading number="02" title="Engineering in context" id="experience-heading" description="Industry experience across financial data and scientific instruments." />
+  <div class="experience-preview">{experience.filter((item) => item.project).slice(0, 2).map((item) => <a href={withBase(`projects/#${item.project}`)} class="experience-row"><div><h3>{item.organization}</h3><span>{item.area}</span></div><p>{item.summary}</p><Icon name="diagonal" /></a>)}</div>
+  <a class="text-link section-link" href={withBase('experience/')}>View experience<Icon name="arrow" size={18} /></a>
+</section>

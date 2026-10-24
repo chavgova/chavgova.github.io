@@ -1,0 +1,32 @@
+---
+import { site, contacts, withBase } from '../data/site';
+import { education } from '../data/experience';
+import Icon from './Icon.astro';
+const [firstName, ...lastName] = site.name.split(' ');
+---
+<section class="hero container" aria-labelledby="hero-heading">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="accent-dash" aria-hidden="true"></span> Research to production</p>
+    <p class="hero-intro">I'm</p>
+    <h1 id="hero-heading">{firstName}<br />{lastName.join(' ')}<span class="accent">.</span></h1>
+    <p class="hero-role">{site.title}</p>
+    <p class="hero-description">{site.description}</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href={site.cv || withBase('experience/')} download={site.cv ? true : undefined}>{site.cv ? 'Download CV' : 'View Experience'}<Icon name={site.cv ? 'download' : 'arrow'} size={18} /></a>
+      <a class="button button-quiet" href={withBase('projects/')}>Explore projects<Icon name="diagonal" size={18} /></a>
+    </div>
+    {contacts.length > 0 && <div class="social-links">{contacts.map(({ href, label, icon }) => <a href={href} aria-label={label}><Icon name={icon} size={18} /></a>)}</div>}
+  </div>
+  <div class:list={['hero-visual', { 'has-portrait': site.portrait }]}>
+    {site.portrait ? <img class="portrait" src={site.portrait} alt={site.name} width={site.portraitDimensions.width} height={site.portraitDimensions.height} fetchpriority="high" /> : <div class="monogram-frame" role="img" aria-label="GC monogram">
+      <div class="frame-coordinate top-left" aria-hidden="true">GC / AMSTERDAM</div>
+      <div class="monogram-orbit" aria-hidden="true"><div class="monogram-inner">gc<span>.</span></div></div>
+      <div class="frame-caption" aria-hidden="true"><span>Research ↔ Engineering</span><span>52.37° N / 4.90° E</span></div>
+    </div>}
+  </div>
+</section>
+<div class="profile-strip container">
+  <span><Icon name="pin" size={16} /> {site.location}</span>
+  {education.map((item) => <span>{item.shortQualification} <span class="muted">/ {item.shortInstitution}</span></span>)}
+  <span>Industry ML + research</span>
+</div>

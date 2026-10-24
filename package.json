@@ -1,0 +1,29 @@
+{
+  "name": "gabriela-chavgova-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/check-links.mjs",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "astro": "^7.4.2",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3",
+    "@playwright/test": "^1.64.1",
+    "@axe-core/playwright": "^4.14.0",
+    "cheerio": "^1.2.0"
+  }
+}

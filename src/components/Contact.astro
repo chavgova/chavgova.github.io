@@ -1,0 +1,8 @@
+---
+import { contacts, withBase } from '../data/site';
+import Icon from './Icon.astro';
+---
+<section class="contact-section container" aria-labelledby="contact-heading">
+  <div><p class="eyebrow">From ideas to useful software</p><h2 id="contact-heading">Action-oriented engineer<span class="accent">.</span></h2><p>Focused on building solutions that solve real-world user problems.</p></div>
+  <div class="contact-actions">{contacts.length > 0 ? contacts.map(({ label, href, icon }) => <a class="text-link" href={href}><Icon name={icon} />{label}<Icon name="diagonal" size={17} /></a>) : <a class="button button-outline" href={withBase('about/')}>More about me<Icon name="arrow" size={18} /></a>}</div>
+</section>

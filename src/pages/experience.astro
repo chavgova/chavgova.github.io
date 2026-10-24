@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { experience, upcomingExperience } from '../data/experience';
+import { withBase, site } from '../data/site';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout title="Experience" description="Gabriela Chavgova’s industry experience at ABN AMRO and Thermo Fisher Scientific, combining applied NLP, software engineering, and scientific ML workflows.">
+  <div class="container page-content">
+    <header class="page-heading"><p class="eyebrow">Applied work</p><h1>Engineering with context<span class="accent">.</span></h1><p>Machine learning in settings where data, software, and the problem domain all matter.</p></header>
+    <section class="experience-list" aria-labelledby="professional-heading"><h2 id="professional-heading" class="catalogue-heading">Professional experience</h2>{experience.map((item) => <article class="experience-detail"><div class="experience-org"><span class="mono muted">{item.date}</span><h3>{item.organization}</h3><p>{item.area}</p><p>{item.context}</p></div><div><p>{item.summary}</p><ul class="tags">{item.skills.map((skill) => <li>{skill}</li>)}</ul>{item.project && <a class="text-link" href={withBase(`projects/#${item.project}`)}>Explore the work<Icon name="arrow" size={18} /></a>}</div></article>)}</section>
+    <section class="education-callout" aria-labelledby="upcoming-heading"><div><p class="eyebrow">Upcoming · {upcomingExperience.date}</p><h2 id="upcoming-heading">{upcomingExperience.organization}</h2><p>{upcomingExperience.title}</p><p>{upcomingExperience.topic}</p></div></section>
+    <section class="education-callout"><div><p class="eyebrow">Academic foundation</p><h2>Computer science meets<br />artificial intelligence.</h2><p>MSc AI studies at the University of Amsterdam, with completion expected in July 2027, following a BSc in Computer Science and Honors Academy graduation at TU/e.</p></div><a class="text-link" href={withBase('about/#education')}>View education<Icon name="arrow" size={18} /></a></section>
+    {site.cv && <a class="button button-primary" href={site.cv} download>Download current CV<Icon name="download" size={18} /></a>}
+  </div>
+</BaseLayout>

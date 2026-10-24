@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../lib/projects';
+import MethodDiagram from './MethodDiagram.astro';
+import ProjectDetails from './ProjectDetails.astro';
+import Icon from './Icon.astro';
+interface Props { project: Project }
+const { project } = Astro.props;
+const { data } = project;
+---
+<article class="project-card" id={project.id} data-project-card data-categories={JSON.stringify(data.categories)} aria-labelledby={`title-${project.id}`}>
+  <div class="card-image" aria-hidden="true">
+    {data.cover ? <Image src={data.cover} alt="" widths={[320, 480, 720]} sizes="(max-width: 767px) 100vw, 300px" width={480} height={300} fit="contain" loading="lazy" /> : <MethodDiagram steps={data.diagram} compact />}
+  </div>
+  <div class="card-content">
+    <div class="card-meta"><span class="eyebrow">{data.categories[0]}</span>{(data.dateLabel || data.year) && <span class="mono muted">{data.dateLabel || data.year}</span>}</div>
+    <h3 id={`title-${project.id}`}>{data.title}</h3>
+    <p class="card-context">{data.context} <span aria-hidden="true">/</span> {data.role}</p>
+    <p class="card-summary">{data.summary}</p>
+    <ul class="tags" aria-label="Project skills">{data.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}</ul>
+    {data.confidential && <p class="confidential card-confidential">Code not public</p>}
+  </div>
+  <details class="project-expansion" name="project-details" id={`details-${project.id}`}>
+    <summary aria-controls={`content-${project.id}`}><span class="when-closed">View project details</span><span class="when-open">Close project details</span><span class="sr-only"> — {data.title}</span><Icon name="chevron" size={18} /></summary>
+    <ProjectDetails project={project} />
+  </details>
+</article>

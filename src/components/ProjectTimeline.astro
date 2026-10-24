@@ -1,0 +1,59 @@
+---
+import type { Project } from '../lib/projects';
+import { timelineProjects, projectUrl } from '../lib/projects';
+import { withBase } from '../data/site';
+import SectionHeading from './SectionHeading.astro';
+import TimelineNode from './TimelineNode.astro';
+import Icon from './Icon.astro';
+interface Props { projects: Project[] }
+const { projects } = Astro.props;
+const dated = timelineProjects(projects);
+const undated = projects.filter(({ data }) => data.featured && data.year === undefined).slice(0, 5);
+---
+<section class="section container selected-work" aria-labelledby="selected-work">
+  <SectionHeading number="01" title="Selected Work" id="selected-work" description="From experimental questions to practical systems. Explore the thinking behind the work." />
+  {dated.length > 0 && <div class="timeline" data-timeline>
+    <div class="timeline-instructions"><span class="eyebrow">Research & engineering, over time</span><span class="muted">Select a project to explore</span></div>
+    <ol class="timeline-track" style={`--node-count: ${dated.length}`}>
+      {dated.map((project, index) => <TimelineNode project={project} selected={index === dated.length - 1} />)}
+    </ol>
+  </div>}
+  {undated.length > 0 && <div class="undated-work"><div><h3>Recent work</h3><p class="muted">Industry & research · dates to be added</p></div><ul>{undated.map((project) => <li><a href={withBase(projectUrl(project))}><span>{project.data.shortTitle || project.data.title}</span><span class="undated-context">{project.data.context}</span><Icon name="diagonal" size={17} /></a></li>)}</ul></div>}
+  <a class="text-link all-projects" href={withBase('projects/')}>Explore all projects<Icon name="arrow" size={18} /></a>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-timeline]').forEach((timeline) => {
+    const nodes = Array.from(timeline.querySelectorAll<HTMLDetailsElement>('details'));
+    const fitPanel = () => {
+      const panel = nodes.find((node) => node.open)?.querySelector<HTMLElement>('.project-preview');
+      if (panel) timeline.style.setProperty('--preview-height', `${panel.offsetHeight}px`);
+    };
+    const observer = new ResizeObserver(fitPanel);
+    nodes.forEach((node) => observer.observe(node.querySelector('.project-preview')!));
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)');
+    const sync = (node: HTMLDetailsElement) => node.querySelector('summary')?.setAttribute('aria-expanded', String(node.open));
+    nodes.forEach(sync);
+    const select = (node: HTMLDetailsElement) => { nodes.forEach((other) => { other.open = other === node; sync(other); }); fitPanel(); };
+    nodes.forEach((node) => {
+      const trigger = node.querySelector<HTMLElement>('summary')!;
+      node.addEventListener('toggle', () => { sync(node); fitPanel(); });
+      trigger.addEventListener('pointerenter', () => { if (finePointer.matches && !timeline.contains(document.activeElement)) select(node); });
+      trigger.addEventListener('focus', () => { if (finePointer.matches) select(node); });
+      trigger.addEventListener('click', (event) => {
+        // Explicitly toggle to avoid focus-open followed by the native click closing it.
+        event.preventDefault();
+        if (node.open && !finePointer.matches) { node.open = false; sync(node); }
+        else select(node);
+      });
+    });
+    timeline.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      const open = nodes.find((node) => node.open);
+      if (!open) return;
+      open.querySelector<HTMLElement>('summary')!.focus();
+      nodes.forEach((node) => { node.open = false; sync(node); });
+    });
+    document.addEventListener('click', (event) => { if (!timeline.contains(event.target as Node)) nodes.forEach((node) => { node.open = false; sync(node); }); });
+    fitPanel();
+  });
+</script>

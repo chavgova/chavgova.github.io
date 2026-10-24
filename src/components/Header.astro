@@ -1,0 +1,31 @@
+---
+import { site, withBase } from '../data/site';
+import Icon from './Icon.astro';
+const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/^\//, '');
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href={withBase()} aria-label={`${site.name}, home`}>gc<span>.</span></a>
+    <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false"><Icon name="menu" /> <span>Menu</span></button>
+    <nav id="main-nav" aria-label="Main navigation">
+      {site.nav.map(({ label, path }) => <a href={withBase(path)} aria-current={(path === '' ? current === '' : current.startsWith(path)) ? 'page' : undefined}>{label}</a>)}
+      {site.cv && <a class="nav-cv" href={site.cv} download>CV <Icon name="download" size={16} /></a>}
+    </nav>
+  </div>
+</header>
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header')!;
+  const toggle = header.querySelector<HTMLButtonElement>('.menu-toggle')!;
+  const nav = header.querySelector<HTMLElement>('nav')!;
+  header.classList.add('enhanced');
+  const close = () => { toggle.setAttribute('aria-expanded', 'false'); header.classList.remove('menu-open'); };
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    header.classList.toggle('menu-open', open);
+  });
+  header.addEventListener('keydown', (event) => { if (event.key === 'Escape' && header.classList.contains('menu-open')) { close(); toggle.focus(); } });
+  document.addEventListener('click', (event) => { if (!header.contains(event.target as Node)) close(); });
+  nav.addEventListener('focusout', (event) => { if (!header.contains(event.relatedTarget as Node)) close(); });
+  nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+</script>

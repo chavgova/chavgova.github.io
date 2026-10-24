@@ -1,0 +1,29 @@
+Source: Projects – Gabriela Chavgova.html
+Historical reference; not final portfolio copy.
+
+AI Predictive Modeling of Neuron Interactions 2024
+Hypothesis
+The activity of a neuron can be predicted based on the activity of its surrounding neurons using Deep Learning algorithms.
+Conducting this research as part of the High-Tech Systems track of the  Honor Academy @ TUe.
+This project uses various machine learning techniques to predict the activity of a neuron based on the behavior of surrounding neurons. By modeling temporal and spatial interactions using advanced neural network architectures, we aim to capture complex dependencies and accurately forecast neuronal behavior and compare the efficacy of different AI models. This approach offers insights into neural network interactions and has potential applications in neuroscience research, brain-computer interfaces, and the study of biological systems.
+2022 Research Project
+We hypothesize that bioelectrical signals can be used as a reliable source to analyze and foresee people’s mental states. We focus on using these signals to recognize a specific current and possibly predict the next mental states provoked by stimulus.
+Consultant:
+Assoc. Prof. Zlatogor Minchev
+– Bulgarian Academy of Sciences
+Mentor:
+Zvezdin Besarabov
+– University College London
+Past Projects:
+RoboBuba
+RoboBuba is an educational and research robot. It combines parts of IoT, robotics, physics, mathematics, and computer science. RoboBuba’s main purpose is education. The robot is wirelessly controlled via Bluetooth, accelerometer, and gyro. Its other function is research – measuring and recording environmental data. There are 3 versions of the robot.
+To make the body I used a 3D printer and Fusion 360 for 3D modeling. With this project, I achieved the best functionality for its cost. I use components that are widely applicable in the field of the Internet of Things and Robotics to help students learn how to work with them.
+QUINN
+QUINN is an innovative combination of machine learning research, artificial intelligence, and hardware. The assistant recognizes emotions from the human voice in each command and can react accordingly. It answers questions about different topics (including emotions and how to deal with them).
+Voice Emotion Recognition 
+(Research)
+Emotions are a key aspect of being human. Yet our technological tools largely ignore that. It is reasonable to expect that the next stage of personal assistants can also recognize and react to one’s emotional state too. We hypothesize that the human voice carries enough information for accurate voice emotion recognition and present machine learning (ML) algorithms as a solution.
+Taking into account psychological and machine learning research, we conduct a number of experiments constructing various ML models in order to distinguish 8 emotions. We perform data analysis and neural network predictions to classify voice recordings.
+We have achieved 93-94% accuracy of the female model, 66-67% of the male one, and 87% of the gender-neutral algorithm. The male data was not enough for good generalization.
+A key direction to improve these results would be to find more well-classified data. We discovered that gender-specific algorithms generally achieve higher accuracy and better generalization. We also found that some specific emotions are confused for others.
+This project would be favorable for both machines and humans. It has the potential to be used in psychology (psychodiagnostics, social psychology) as well as in the advancement of human-machine interactions.
