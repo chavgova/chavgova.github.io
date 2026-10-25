@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 
 export const withBase = (path = '') => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
-const portraitPath = 'images/portrait-transparent.webp';
+const portraitPath = 'images/gabriela_portfolio_image_shoulders.webp';
 const cvPath = 'cv/gabriela-chavgova-cv.pdf';
 export const site = {
   name: 'Gabriela Chavgova',
@@ -12,7 +12,7 @@ export const site = {
   portraitDimensions: { width: 720, height: 1279 },
   cv: existsSync(`public/${cvPath}`) ? withBase(cvPath) : undefined,
   // Configure only confirmed public contact details. Unset values render no icons.
-  contacts: { github: 'https://github.com/chavgova', linkedin: 'https://www.linkedin.com/in/gabriela-chavgova-4a914bb9', email: 'chavgova88@gmail.com' },
+  contacts: { github: 'https://github.com/chavgova', linkedin: 'https://www.linkedin.com/in/gabriela-chavgova-4a914bb9' }, //, email: 'chavgova88@gmail.com'
   nav: [
     { label: 'Home', path: '' },
     { label: 'Projects', path: 'projects/' },
@@ -23,5 +23,5 @@ export const site = {
 export const contacts = [
   { label: 'GitHub', href: site.contacts.github, icon: 'github' },
   { label: 'LinkedIn', href: site.contacts.linkedin, icon: 'linkedin' },
-  { label: 'Email', href: site.contacts.email ? `mailto:${site.contacts.email}` : '', icon: 'email' },
+ // { label: 'Email', href: site.contacts.email ? `mailto:${site.contacts.email}` : '', icon: 'email' },
 ].filter((contact) => contact.href);
